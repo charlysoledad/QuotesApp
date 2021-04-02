@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quotes List</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/bootstrap.min.css') }}"
+    />
+  </head>
+  <body>
+    <nav style="margin-top: 25px; margin-left: 45px">
+      <a class="btn btn-primary" href="{{ url_for('quotes') }}">Add a quote</a>
+    </nav>
+    <br />
+
+    <div class="container theme-showcase" role="main">
+      <div class="jumbotron" style="color: #fff; background-color: black">
+        <h1>Favorite Quotes</h1>
+      </div>
+
+      <div class="container">
+        <div class="row row-cols-2">
+          <!-- foor loop starts -->
+          {% for r in result %}
+          <div class="col">
+            <div class="card" style="margin-bottom:5px">
+              <div class="card-header">Quote</div>
+              <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                  <p>{{ r.quote }}</p>
+                  <footer class="blockquote-footer">
+                    <cite title="Source Title">{{ r.author }}</cite>
+                  </footer>
+                </blockquote>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          <!-- foor loop ends -->
+        </div>
+      </div>
+    </div>
+    <!-- .container -->
+  </body>
+</html>
